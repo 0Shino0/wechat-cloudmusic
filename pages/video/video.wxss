@@ -1,0 +1,129 @@
+/* pages/video/video.wxss */
+.videoContainer .header{
+  display: flex;
+  padding: 10rpx;
+}
+
+.videoContainer .header image{
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.videoContainer .header .search{
+  border: 1rpx solid #eee;
+  border-radius: 50rpx;
+  /* 
+    flex-grow: 可拉伸+ 默认0 flex-shrink 可压缩 默认1 flex-basis 当前元素的宽度 auto;
+    flex: 1; ==> flex-grow: 1; flex-shrink: 1; flex-basis: 0%;
+    flex:1; 会导致父元素的宽度 自动成为 100%
+
+    flex: auto; ==> flex-grow: 1; flex-shrink: 1; flex-basis: auto;
+  */    
+  flex: 1;
+  margin: 0 20rpx;
+  text-align: center;
+  color: #d43c33;
+  font-size: 26rpx;
+  line-height: 60rpx;
+}
+
+/* 导航区域 */
+.navScroll{
+  height: 60rpx;
+  display: flex;
+  white-space: nowrap;
+}
+
+.navScroll .navItem{
+  padding: 0 30rpx;
+  font-size: 28rpx;
+  line-height: 60rpx;
+  height: 60rpx;
+}
+
+.navContent{
+  height: 60rpx;
+  box-sizing: border-box;
+}
+
+.active{
+  border-bottom: 1rpx solid #d43c33;
+}
+
+/* 视频列表区域  */
+.videoScroll{
+  margin-top: 20rpx;
+  /* vh vw 视口单位   1vh = 1%视口高度 */
+  height: calc(100vh - 162rpx);
+  /* calc() 此 CSS 函数允许在声明 CSS 属性值时执行一些计算。 */
+}
+
+.videoItem {
+  padding: 0 3%;
+}
+
+/* .videoItem video{
+  width: 100%;
+  height: 360rpx;
+  border-radius: 10rpx;
+} */
+
+.videoItem .common{
+  width: 100%;
+  height: 360rpx;
+  border-radius: 10rpx;
+}
+
+.videoItem .content {
+  font-size: 26rpx;
+  height:80rpx;
+  line-height: 80rpx;
+  max-width: 500rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* footer */
+.footer {
+  border-top: 1rpx solid #eee;
+  padding: 20rpx 0;
+}
+.footer .avatar {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+.footer  .nickName {
+  font-size: 26rpx;
+  vertical-align: middle;
+  margin-left: 20rpx;
+}
+
+.footer .comments_praised {
+  float: right;
+}
+
+.comments_praised .btn {
+  display: inline;
+  padding: 0;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.comments_praised .btn:after {
+  border: none;
+}
+
+.comments_praised .item {
+  margin-left: 50rpx;
+  position: relative;
+}
+
+.comments_praised .item .count {
+  position: absolute;
+  top: -20rpx;
+  font-size: 20rpx;
+}

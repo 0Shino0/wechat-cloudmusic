@@ -1,0 +1,72 @@
+<view class="videoContainer">
+  <!-- 头部搜索区域 -->
+  <view class="header">
+    <image src="/static/images/video/video.jpg"></image>
+    <view class="search">
+      搜索音乐
+    </view>
+    <image src="/static/images/logo.png"></image>
+  </view>
+  
+  <!-- 导航区域 -->
+  <scroll-view 
+  class="navScroll"
+  scroll-x 
+  enable-flex
+  scroll-into-view="{{'scroll' + navId}}"
+  scroll-with-animation
+  >
+    <view id="{{'scroll' + item.id}}" class="navItem" wx:for="{{videoGroupList}}" wx:key="id">
+    <!-- bindtap 非冒泡事件 -->
+    <!-- navId 为字符串 -->
+      <view class="navContent {{navId===item.id?'active':''}}" bindtap="changeNav"  id="{{item.id}}">
+        {{item.name}}
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 视频列表区域 -->
+  <scroll-view 
+  class="videoScroll" 
+  scroll-y
+  refresher-enabled
+  bindrefresherrefresh="handleRefresher"
+  refresher-triggered="{{isTriggered}}"
+  bindscrolltolower="handleToLower"
+  >
+    <view class="videoItem" wx:for="{{videoList}}" wx:key="id">
+      <video
+      src="{{item.data.urlInfo.url}}"
+      object-fit="cover"
+      bindplay="handlePlay"
+      id="{{item.data.urlInfo.id}}"
+      poster="{{item.data.coverUrl}}"
+      class="common"
+      wx:if="{{videoId === item.data.vid}}"
+      bindtimeupdate="handleTimeUpdate"
+      bindended="handleEnded"
+      ></video>
+      <image wx:else id="{{item.data.urlInfo.id}}" bindtap="handlePlay" class="common" src="{{item.data.coverUrl}}"></image>
+
+
+      <view class="content">{{item.data.title}}</view>
+      <view class="footer">
+        <image class="avatar" src="{{item.data.creator.avatarUrl}}"></image>
+        <text class="nickName">{{item.data.creator.nickname}}</text>
+        <view class="comments_praised">
+          <text class="item">
+            <text class="iconfont icon-buoumaotubiao15"></text>
+            <text class="count">{{item.data.praisedCount}}</text>
+          </text>
+          <text class="item">
+            <text class="iconfont icon-pinglun1"></text>
+            <text class="count">{{item.data.commentCount}}</text>
+          </text>
+          <button open-type="share" class="item btn">
+            <text class="iconfont icon-gengduo"></text>
+          </button>
+        </view>
+      </view>
+      </view>
+  </scroll-view>
+</view>

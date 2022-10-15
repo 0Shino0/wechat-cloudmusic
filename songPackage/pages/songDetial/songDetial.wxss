@@ -1,0 +1,160 @@
+/* pages/songDetial/songDetial.wxss */
+
+page{
+  height: 100%;
+}
+
+.songContainer {
+  height: 100%;
+  background: rgba(0, 0, 0, .5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 底座 */
+.circle{
+  width: 60rpx;
+  height: 60rpx;
+  z-index: 100;
+  border-radius: 50%;
+  background: #fff;
+}
+
+/* 摇杆样式 */
+.needle {
+  position: relative;
+  z-index: 99;
+  top: -40rpx;
+  left: 60rpx;
+  width: 192rpx;
+  height: 274rpx;
+  /* 旋转 */
+  transform: rotate(-20deg);
+  /* 设置旋转中心点 */
+  transform-origin: 40rpx 0;
+  transition: transform 1s;
+  /* 增加边框方便查看 */
+  /* border: 1rpx solid red; */
+}
+
+.needleRotate{
+  transform: rotate(0deg);
+}
+
+/* 磁盘 */
+.discContainer {
+  position: relative;
+  top: -170rpx;
+  width: 598rpx;
+  height: 598rpx;
+  /* border: 1rpx solid red; */
+}
+ 
+/* 磁盘动画 */
+.discAnimation {
+  /* 动画属性 */
+  animation: disc 1s linear infinite;
+  animation-delay: 1s;
+}
+/* 
+  @keyframes: 动画帧数
+    1. from to
+      1) 适用于简单的动画，该动画只有起始值和结束帧两帧
+      2) 北京 - 上海
+      2) 北京 - 上海  直达
+    2. 百分比
+      1) 适用于复杂的动画，动画可以是多帧
+      2) 取值范围: 0% - 100%
+      2) 北京 - 上海
+      2) 北京 - 西安 - 重庆 - 深圳 - 上海
+*/
+@keyframes disc {
+  from {
+    transform: rotate(0deg)
+  }
+  
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.discContainer .disc{
+  width: 100%;
+  height: 100%;
+}
+
+/* 水平垂直居中 */
+.discContainer .musicImg {
+  position: absolute;
+  width: 370rpx;
+  height: 370rpx;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  border-radius: 50%;
+}
+
+/* 底部控制区域 */
+.musicControl {
+  position: absolute;
+  bottom: 40rpx;
+  left: 0;
+  border-top: 1rpx solid #fff;
+  width: 100%;
+  display: flex;
+
+}
+
+.musicControl  text {
+  width: 20%;
+  height: 120rpx;
+  line-height: 120rpx;
+  text-align: center;
+  color: #fff;
+  font-size: 50rpx;
+}
+
+.musicControl  text.big{
+  font-size: 80rpx;
+}
+
+/* 进度条样式 */
+.progressControl{
+  display: flex;
+  position: relative;
+  bottom: 50rpx;
+  width: 640rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  /* border: 1rpx solid red; */
+}
+
+.barControl{
+  width: 450rpx;
+  height: 4rpx;
+  background: rgba(0, 0, 0, .4);
+  margin: auto;
+}
+
+/* 实时进度条 */
+.audio-currentTime-bar{
+  position: absolute;
+  height: 4rpx;
+  /* width: 100rpx; */
+  background: red;
+}
+
+/* 小圆球的样式 */
+.audioCircle{
+  position: absolute;
+  right: -12rpx;
+  top: -4rpx;
+  width: 12rpx;
+  height: 12rpx;
+  border-radius: 50%;
+  background: #fff;
+}
+
